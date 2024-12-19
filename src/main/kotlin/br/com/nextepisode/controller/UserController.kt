@@ -22,7 +22,6 @@ class UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createUser(@RequestBody newUser: User): User {
-        println("CHEGUEEEEI")
         return service.createUser(newUser)
     }
 
