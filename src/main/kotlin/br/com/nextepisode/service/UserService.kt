@@ -10,17 +10,17 @@ import org.springframework.stereotype.Service
 class UserService {
 
     @Autowired
-    private lateinit var userRepository: UserRepository
+    private lateinit var repository: UserRepository
 
     fun createUser(newUser : User) : User {
-        return userRepository.save(newUser)
+        return repository.save(newUser)
     }
 
     fun listAllUsers() : MutableList<User?> {
-        return userRepository.findAll()
+        return repository.findAll()
     }
 
     fun findUserById(id : Long) : User? {
-        return userRepository.findById(id).orElse(null) //Retorna null se não encontrar o usuário
+        return repository.findById(id).orElse(null) //Retorna null se não encontrar o usuário
     }
 }

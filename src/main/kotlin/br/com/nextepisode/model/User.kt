@@ -1,20 +1,30 @@
 package br.com.nextepisode.model
 
 import jakarta.persistence.*
+
 @Entity
-class User {
+data class User(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0
+    val id: Long = 0,
 
-    var firstName: String = ""
+    @Column(nullable = false)
+    var firstName: String = "",
 
-    var lastName: String? = null
+    var lastName: String? = null,
 
-    var email: String? = null
+    @Column(unique = true, nullable = false)
+    var email: String = "", // Email obrigatório e único
 
-    private var password: String? = null
+    @Column(nullable = false)
+    private var password: String = "" // Senha obrigatória
+) {
+    fun setPassword(password: String) {
+        this.password = password
+    }
 
-    //TODO: Lista de animes favoritos
+    fun getPassword(): String {
+        return password
+    }
 }
